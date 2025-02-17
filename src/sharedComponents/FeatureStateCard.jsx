@@ -3,7 +3,7 @@
 const FeatureStateCard = ({ featureState }) => {
     const { image, eastate_title, segment_name, price, Status, Area, location, facilities, description } = featureState;
     return (
-        <div className="card bg-base-100 w-96 shadow-xl hover:scale-105">
+        <div className="card bg-base-100 shadow-xl">
             <figure className=" ">
                 <img
                     src={image}
