@@ -21,7 +21,7 @@ const FeatureStateCard = ({ featureState }) => {
                 <hr />
                 <p className="flex justify-between items-center">
                     <p className="font-sans text-sm"><span className="font-bold">Size:</span> {Area}</p>
-                    <span className="font-sans text-sm"><span className="font-bold">Price:</span> {price}</span>
+                    <span className="font-sans text-sm"><span className="font-bold">Price:</span> ${price}</span>
                 </p>
                 <p><span className="font-bold font-serif mb-2">Facilities:</span> {facilities.map(facility => <ul className="font-serif font-medium text-base mt-1">- {facility}</ul>)}</p>
                 <p className="font-sans text-base font-bold">{location}</p>
