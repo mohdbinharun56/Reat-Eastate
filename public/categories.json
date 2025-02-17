@@ -1,0 +1,74 @@
+[
+    {
+        "id": 1,
+        "eastate_title": "Modern Industrial Warehouse",
+        "segment_name": "Industrial",
+        "price": 1200000,
+        "Status": "sale",
+        "Area": "5000 sq ft",
+        "location": "Houston, Texas",
+        "facilities": ["loading dock", "office space", "storage area"],
+        "image": "https://images.unsplash.com/photo-1564013799919-ab600027ffc6?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80",
+        "description": "A state-of-the-art industrial warehouse equipped with modern amenities, perfect for large-scale storage and logistics operations."
+    },
+    {
+        "id": 2,
+        "eastate_title": "Spacious Manufacturing Facility",
+        "segment_name": "Industrial",
+        "price": 850000,
+        "Status": "sale",
+        "Area": "7500 sq ft",
+        "location": "Chicago, Illinois",
+        "facilities": ["heavy power supply", "crane services", "security system"],
+        "image": "https://images.unsplash.com/photo-1512917774080-9991f1c4c750?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80",
+        "description": "A spacious manufacturing facility with heavy machinery support, ideal for industrial production and assembly lines."
+    },
+    {
+        "id": 3,
+        "eastate_title": "Tech Industrial Park Unit",
+        "segment_name": "Industrial",
+        "price": 4500,
+        "Status": "rent",
+        "Area": "3000 sq ft",
+        "location": "San Francisco, California",
+        "facilities": ["high-speed internet", "conference rooms", "parking"],
+        "image": "https://images.unsplash.com/photo-1480074568708-e7b720bb3f09?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80",
+        "description": "A tech-friendly industrial unit located in a prime business park, suitable for startups and tech companies."
+    },
+    {
+        "id": 4,
+        "eastate_title": "Eco-Friendly Industrial Space",
+        "segment_name": "Industrial",
+        "price": 950000,
+        "Status": "sale",
+        "Area": "6000 sq ft",
+        "location": "Portland, Oregon",
+        "facilities": ["solar panels", "recycling center", "electric vehicle charging"],
+        "image": "https://images.unsplash.com/photo-1564013799919-ab600027ffc6?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80",
+        "description": "An eco-conscious industrial space designed with sustainability in mind, featuring solar panels and EV charging stations."
+    },
+    {
+        "id": 5,
+        "eastate_title": "Downtown Industrial Loft",
+        "segment_name": "Industrial",
+        "price": 3200,
+        "Status": "rent",
+        "Area": "2500 sq ft",
+        "location": "New York, New York",
+        "facilities": ["open floor plan", "natural light", "security system"],
+        "image": "https://images.unsplash.com/photo-1501183638710-841dd1904471?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80",
+        "description": "A stylish industrial loft located in the heart of downtown, perfect for creative workspaces or small-scale manufacturing."
+    },
+    {
+        "id": 6,
+        "eastate_title": "Heavy Machinery Workshop",
+        "segment_name": "Industrial",
+        "price": 1500000,
+        "Status": "sale",
+        "Area": "10000 sq ft",
+        "location": "Detroit, Michigan",
+        "facilities": ["machine shop", "tool storage", "employee lounge"],
+        "image": "https://images.unsplash.com/photo-1512916194211-3f2b7f5f7f3d?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80",
+        "description": "A fully equipped heavy machinery workshop with ample space for large equipment and tools, ideal for industrial operations."
+    }
+]
