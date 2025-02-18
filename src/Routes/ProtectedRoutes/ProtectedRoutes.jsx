@@ -6,7 +6,7 @@ const ProtectedRoutes = ({ children }) => {
     const { user, loading } = useContext(CreateContext);
 
     if (loading) {
-        return <div className="text-center text-7xl font-bold font-serif">Loading...</div>
+        <div className="text-center text-7xl font-bold font-serif">Loading...</div>
     }
     if (user) {
         return children;

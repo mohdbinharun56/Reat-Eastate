@@ -4,15 +4,16 @@ import Home from "../pages/Home/Home";
 import Login from "../pages/Login/Login";
 import Register from "../pages/Register/Register";
 import NotFoud from "../pages/NotFound404/NotFoud";
+import ProtectedRoutes from "./ProtectedRoutes/ProtectedRoutes";
+import EastateDetails from "../pages/EastateDetails/EastateDetails";
 const router = createBrowserRouter([
     {
         path: '/',
         element: <Root/>,
-        errorElement: <NotFoud/> ,
         children:[
             {
                 path: '/',
-                loader: ()=> fetch('categories.json') ,
+                // loader: ()=> fetch('categories.json') ,
                 element: <Home/>
 
             },
@@ -23,8 +24,16 @@ const router = createBrowserRouter([
             {
                 path: '/register',
                 element: <Register/>
+            },
+            {
+                path: '/eastate-details/:id',
+                element: <ProtectedRoutes>
+                    <EastateDetails/>
+                </ProtectedRoutes>
             }
-        ]
+        ],
+        // errorElement: <NotFoud/>
+
     }
 ]);
 
