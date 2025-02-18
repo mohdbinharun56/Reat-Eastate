@@ -1,6 +1,8 @@
 import { Outlet } from "react-router-dom";
 import Navbar from "./sharedComponents/Navbar";
 import Footer from "./sharedComponents/Footer";
+import { useContext } from "react";
+import { CreateContext } from "./sharedComponents/Provider/AuthProvider";
 
 
 const Root = () => {

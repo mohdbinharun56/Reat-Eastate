@@ -1,12 +1,13 @@
 import { useContext } from "react";
-import { NavLink, Link} from "react-router-dom";
+import { NavLink, Link, useNavigate} from "react-router-dom";
 import { CreateContext } from "./Provider/AuthProvider";
 
 const Navbar = () => {
     const {user,logOut} = useContext(CreateContext);
+    const navigate = useNavigate();
     const handleLogout = () => {
         logOut()
-        .then()
+        .then(()=>navigate('/login'))
         .catch(error=>{console.log(error.message)})
     }
     const navLinnks = <>

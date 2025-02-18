@@ -1,7 +1,10 @@
+import { useContext } from "react";
 import { Link } from "react-router-dom";
+import { CreateContext } from "./Provider/AuthProvider";
 
 
 const FeatureStateCard = ({ featureState }) => {
+    const {user} = useContext(CreateContext);
     const { id,image, eastate_title, segment_name, price, Status, Area, location, facilities, description } = featureState;
     return (
         <div className="card bg-base-100 shadow-xl">
@@ -27,9 +30,9 @@ const FeatureStateCard = ({ featureState }) => {
                 <div><span className="font-bold font-serif mb-2">Facilities:</span> {facilities.map((facility,idx) => <ul key={idx} className="font-serif font-medium text-base mt-1">- {facility}</ul>)}</div>
                 <p className="font-sans text-base font-bold">{location}</p>
                 <div className="card-actions">
-                    <Link to={`/eastate-details/${id}`}><button className="btn btn-secondary w-full">View Property</button></Link>
-                    
-                    {/* <button className="btn btn-secondary w-full">View Property</button> */}
+                    {
+                        <Link to={user?`/eastate-details/${id}`:'/login'}><button className="btn btn-secondary w-full">View Property</button></Link> 
+                    }
                 </div>
             </div>
         </div>

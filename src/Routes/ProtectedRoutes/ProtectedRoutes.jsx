@@ -4,9 +4,9 @@ import { Navigate } from "react-router-dom";
 
 const ProtectedRoutes = ({ children }) => {
     const { user, loading } = useContext(CreateContext);
-
+    // console.log(user);
     if (loading) {
-        <div className="text-center text-7xl font-bold font-serif">Loading...</div>
+       return <div className="text-center text-7xl font-bold font-serif">Loading...</div>
     }
     if (user) {
         return children;

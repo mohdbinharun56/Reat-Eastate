@@ -32,7 +32,7 @@ const router = createBrowserRouter([
                 </ProtectedRoutes>
             }
         ],
-        // errorElement: <NotFoud/>
+        errorElement: <NotFoud/>
 
     }
 ]);
