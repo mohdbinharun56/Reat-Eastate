@@ -1,52 +1,88 @@
 import { useContext, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { CreateContext } from "../../sharedComponents/Provider/AuthProvider";
+import Swal from "sweetalert2";
+import { useForm } from "react-hook-form";
 
 const Register = () => {
-    const { signUp } = useContext(CreateContext);
+    // React Hook Form for Validation purpose
+    const { register, handleSubmit, watch, formState: { errors } } = useForm();
+    // const onSubmit = (data) => console.log(data)
+    const handleRegister = (data) => {
+        // console.log(data);
+        const { Name, Email, Password, Photo } = data;
 
-    const [error, setError] = useState('');
-    const navigate = useNavigate();
-    
-
-    const handleRegister = (e) => {
-        e.preventDefault();
-        const name = e.target.name.value;
-        const email = e.target.email.value;
-        const password = e.target.password.value;
-        const photo = e.target.photo.value;
-
-        if (password.length < 6) {
+        if (Password.length < 6) {
             setError('Password at least 6 characters or long');
             return;
         }
-        if (!/[A-Z]/.test(password)) {
+        if (!/[A-Z]/.test(Password)) {
             setError('Password must be contain at least one upper case');
             return;
         }
-        if (!/[a-z]/.test(password)) {
+        if (!/[a-z]/.test(Password)) {
             setError('Password must contain at least one lower case');
             return;
         }
 
-        console.log(name, email, password, photo);
+        console.log(Name, Email, Password, Photo);
 
-        signUp(email, password)
+        signUp(Email, Password)
             .then(res => {
-                navigate('/login')
+                console.log(res);
+                Swal.fire(
+                    {
+                        title: "Successfully Register",
+                        icon: "success",
+                        showConfirmButton: true,
+                        timer: 2000
+                    }
+                )
+                navigate('/login');
             })
-            .catch(error => setError(error.message.split('/').pop().join(1)))
+            .catch(error => setError(error.message.split('/').pop().replace(')', '')))
     }
+
+    // destructure signUp function to implementing  useContext hooks.
+    const { signUp } = useContext(CreateContext);
+
+    // set useState hook to manage the error.
+    const [error, setError] = useState('');
+
+    // implementing useNavigate hook to navigation others page.
+    const navigate = useNavigate();
+
     return (
         <div>
             <div className="mt-2">
                 <div className="space-y-5 md:w-1/2 mx-auto shadow-md border border-[#ABABAB] rounded-md px-10 py-4 ">
                     <h1 className="text-2xl font-bold">Register</h1>
-                    <form className="space-y-10" onSubmit={handleRegister}>
-                        <input type="text" name="name" placeholder="Name" required className="w-full text-base font-medium outline-none border border-black p-2 rounded-ss-xl" />
-                        <input type="email" name="email" placeholder="E-mail" required className="w-full text-base font-medium outline-none border border-black p-2 rounded-ss-xl" />
-                        <input type="password" name="password" placeholder="Password" required className="w-full text-base font-medium outline-none border border-black p-2 rounded-ss-xl" />
-                        <input type="text" name="photo" placeholder="Photo URL" required className="w-full text-base font-medium outline-none border border-black p-2 rounded-ss-xl" />
+                    <form className="space-y-10" onSubmit={handleSubmit(handleRegister)}>
+                        <input type="text"
+                            placeholder="Name"
+                            {...register("Name", { required: true })}
+                            className="w-full text-base font-medium outline-none border border-black p-2 rounded-ss-xl"
+                        />
+                        {errors.Name && <span className="text-red-500">This field is required</span>}
+
+                        <input type="email"
+                            placeholder="E-mail"
+                            {...register("Email", { required: true })}
+                            className="w-full text-base font-medium outline-none border border-black p-2 rounded-ss-xl"
+                        />
+                        {errors.Email && <span className="text-red-500">This field is required</span>}
+                        <input type="password"
+                            placeholder="Password"
+                            {...register("Password", { required: true })}
+                            className="w-full text-base font-medium outline-none border border-black p-2 rounded-ss-xl"
+                        />
+                        {errors.Password && <span className="text-red-500">This field is required</span>}
+                        <input type="text"
+                            placeholder="Photo URL"
+                            {...register("Photo", { required: true })}
+                            className="w-full text-base font-medium outline-none border border-black p-2 rounded-ss-xl"
+                        />
+                        {errors.Photo && <span className="text-red-500">This field is required</span>}
                         {
                             error && <small className="text-red-500">{error}</small>
                         }
