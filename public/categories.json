@@ -2,7 +2,7 @@
     {
         "id": 1,
         "eastate_title": "Modern Industrial Warehouse",
-        "segment_name": "Industrial",
+        "segment_name": "Warehouses",
         "price": 1200000,
         "Status": "sale",
         "Area": "5000 sq ft",
@@ -14,7 +14,7 @@
     {
         "id": 2,
         "eastate_title": "Spacious Manufacturing Facility",
-        "segment_name": "Industrial",
+        "segment_name": "Industrial park",
         "price": 850000,
         "Status": "sale",
         "Area": "7500 sq ft",
@@ -26,7 +26,7 @@
     {
         "id": 3,
         "eastate_title": "Tech Industrial Park Unit",
-        "segment_name": "Industrial",
+        "segment_name": "Factories",
         "price": 4500,
         "Status": "rent",
         "Area": "3000 sq ft",
@@ -38,7 +38,7 @@
     {
         "id": 4,
         "eastate_title": "Eco-Friendly Industrial Space",
-        "segment_name": "Industrial",
+        "segment_name": "Factories",
         "price": 950000,
         "Status": "sale",
         "Area": "6000 sq ft",
@@ -50,7 +50,7 @@
     {
         "id": 5,
         "eastate_title": "Downtown Industrial Loft",
-        "segment_name": "Industrial",
+        "segment_name": " Industrial parks",
         "price": 3200,
         "Status": "rent",
         "Area": "2500 sq ft",
@@ -62,7 +62,7 @@
     {
         "id": 6,
         "eastate_title": "Heavy Machinery Workshop",
-        "segment_name": "Industrial",
+        "segment_name": "Warehouses",
         "price": 1500000,
         "Status": "sale",
         "Area": "10000 sq ft",

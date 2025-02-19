@@ -14,13 +14,13 @@ const Navbar = () => {
     const navLinnks = <>
         <li><NavLink to='/'>Home</NavLink></li>
         <li><NavLink to='/update'>Update Profile</NavLink></li>
-        {/* <li>
+        <li>
             {
                 user ? <div>
-                    <img src={user?.photoURL || 'https://avatars.githubusercontent.com/u/79358840?v=4'} alt="profile" className="w-10 rounded-full" />
+                    Welcome {user?.displayName || user?.email || '-'}
                 </div> : <NavLink to='/login'>Login</NavLink>
             }
-        </li> */}
+        </li>
     </>
     return (
         <div className="navbar text-white bg-[#00335A]">
