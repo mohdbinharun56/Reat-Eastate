@@ -1,7 +1,7 @@
 import { useContext, useState } from "react";
 import { useForm } from "react-hook-form";
 import { FaFacebook, FaGoogle } from "react-icons/fa";
-import { Link, useNavigate } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import { CreateContext } from "../../sharedComponents/Provider/AuthProvider";
 
 
@@ -10,7 +10,9 @@ const Login = () => {
 
     const [error, setError] = useState('');
     const navigate = useNavigate();
-    const { register, handleSubmit, watch, formState: { errors } } = useForm();
+    const { register, handleSubmit, formState: { errors } } = useForm();
+    const location = useLocation();
+
     const handleLogin = (data) => {
         const { email, password } = data;
         console.log(email, password);
@@ -18,7 +20,7 @@ const Login = () => {
         signIn(email, password)
             .then(res => {
                 console.log(res.user)
-                navigate('/');
+                navigate(location?.state || '/');
             })
             .catch(error => setError(error.message.split('/').pop().replace(')', '')))
     }
