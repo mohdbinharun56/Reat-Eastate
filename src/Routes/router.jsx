@@ -6,6 +6,7 @@ import Register from "../pages/Register/Register";
 import NotFoud from "../pages/NotFound404/NotFoud";
 import ProtectedRoutes from "./ProtectedRoutes/ProtectedRoutes";
 import EastateDetails from "../pages/EastateDetails/EastateDetails";
+import UpdateProfile from "../pages/UpdateProfile/UpdateProfile";
 const router = createBrowserRouter([
     {
         path: '/',
@@ -29,6 +30,12 @@ const router = createBrowserRouter([
                 path: '/eastate-details/:id',
                 element: <ProtectedRoutes>
                     <EastateDetails/>
+                </ProtectedRoutes>
+            },
+            {
+                path: '/update',
+                element: <ProtectedRoutes>
+                    <UpdateProfile/>
                 </ProtectedRoutes>
             }
         ],

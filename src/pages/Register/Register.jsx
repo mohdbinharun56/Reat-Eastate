@@ -3,9 +3,17 @@ import { Link, useNavigate } from "react-router-dom";
 import { CreateContext } from "../../sharedComponents/Provider/AuthProvider";
 import Swal from "sweetalert2";
 import { useForm } from "react-hook-form";
-import { Helmet } from "react-helmet";
 
 const Register = () => {
+    // destructure signUp function to implementing  useContext hooks.
+    const { signUp, profileUpdate } = useContext(CreateContext);
+
+    // set useState hook to manage the error.
+    const [error, setError] = useState('');
+
+    // implementing useNavigate hook to navigation others page.
+    const navigate = useNavigate();
+
     // React Hook Form for Validation purpose
     const { register, handleSubmit, watch, formState: { errors } } = useForm();
     // const onSubmit = (data) => console.log(data)
@@ -30,31 +38,27 @@ const Register = () => {
 
         signUp(Email, Password)
             .then(res => {
-                console.log(res);
-                Swal.fire(
-                    {
-                        title: "Successfully Register",
-                        icon: "success",
-                        showConfirmButton: true,
-                        timer: 2000
-                    }
-                )
-                navigate('/login');
+                profileUpdate(Name, Photo)
+                .then(() => {
+                        console.log(res);
+                        Swal.fire(
+                            {
+                                title: "Successfully Register",
+                                icon: "success",
+                                showConfirmButton: true,
+                                timer: 2000
+                            }
+                        )
+                        navigate('/');
+                    })
+                    // .catch(error => setError(error.message.split('/').pop().replace(')', '')))
             })
             .catch(error => setError(error.message.split('/').pop().replace(')', '')))
     }
 
-    // destructure signUp function to implementing  useContext hooks.
-    const { signUp } = useContext(CreateContext);
-
-    // set useState hook to manage the error.
-    const [error, setError] = useState('');
-
-    // implementing useNavigate hook to navigation others page.
-    const navigate = useNavigate();
-    useEffect(()=>{
+    useEffect(() => {
         document.title = "Register | Real Eastate Hub";
-    },[])
+    }, [])
     return (
         <div>
             <div className="mt-2">
