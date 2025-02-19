@@ -1,7 +1,8 @@
 import { createContext, useEffect, useState } from "react";
-import { createUserWithEmailAndPassword, onAuthStateChanged, signInWithEmailAndPassword, signOut, updateProfile } from "firebase/auth";
-import { getAuth } from "firebase/auth";
+import { createUserWithEmailAndPassword, onAuthStateChanged, signInWithEmailAndPassword, signInWithPopup, signOut, updateProfile } from "firebase/auth";
+import { getAuth, GoogleAuthProvider,GithubAuthProvider  } from "firebase/auth";
 import app from "../../Firebase/FirebaseConfig";
+
 
 export const CreateContext = createContext();
 
@@ -49,8 +50,18 @@ const AuthProvider = ({ children }) => {
             photoURL: photoURL
           })
     }
+
+    const loginWithGoogle = () =>{
+        const googleProvider = new GoogleAuthProvider();
+        return signInWithPopup(auth,googleProvider);
+    }
+    const loginWithGithub = () =>{
+        const gitHubProvider = new GithubAuthProvider();
+        return signInWithPopup(auth,gitHubProvider);
+    }
     const info = {
-        signUp, signIn, logOut, user, loading, profileUpdate,
+        signUp, signIn, logOut, user, loading, profileUpdate, loginWithGoogle,
+        loginWithGithub,
     }
     return (
         <CreateContext.Provider value={info}>

@@ -1,4 +1,4 @@
-import { useContext, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import { CreateContext } from "../../sharedComponents/Provider/AuthProvider";
 import Swal from "sweetalert2";
 import { useNavigate } from "react-router-dom";
@@ -25,6 +25,9 @@ const UpdateProfile = () => {
             navigate('/')
         });
     }
+    useEffect(()=>{
+        document.title = "Update Profile | Real Eastate Hub"
+    },[])
     return (
         <div className="min-h-[451px]">
             <h1 className="uppercase font-bold text-center mb-10 text-3xl">{user.displayName} Profile</h1>

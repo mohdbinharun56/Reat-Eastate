@@ -1,12 +1,12 @@
 import { useContext, useEffect, useState } from "react";
 import { useForm } from "react-hook-form";
-import { FaFacebook, FaGoogle } from "react-icons/fa";
+import { FaGithub, FaGoogle } from "react-icons/fa";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import { CreateContext } from "../../sharedComponents/Provider/AuthProvider";
 
 
 const Login = () => {
-    const { signIn } = useContext(CreateContext);
+    const { signIn, loginWithGoogle, loginWithGithub } = useContext(CreateContext);
 
     const [error, setError] = useState('');
     const navigate = useNavigate();
@@ -28,7 +28,23 @@ const Login = () => {
         document.title = "Login | Real Eastate Hub";
     }, [])
     
-
+    const handleGoogleLogin = () =>{
+        console.log("google");
+        loginWithGoogle()
+        .then(res=>{
+            console.log(res.user)
+            navigate(location?.state || '/')
+        })
+        .catch(error=>setError(error.message.split('/').pop().replace(')','')))
+    }
+    const handleGithubLogin = () =>{
+        console.log("github")
+        loginWithGithub()
+        .then(res=>{
+            console.log(res.user);
+            navigate(location?.state || '/');
+        })
+    }
     return (
         <div>
             <div className="mt-2">
@@ -56,8 +72,8 @@ const Login = () => {
                     <hr className="border border-[#AAAAAA] w-full" /><span className="text-base font-medium">or</span> <hr className="border border-[#AAAAAA] w-full" />
                 </div>
                 <div className="space-y-4 md:space-y-8 mb-10">
-                    <button className="flex items-center gap-2 mx-auto bg-blue-950 text-white rounded-md p-3"><FaFacebook /><span className="text-base font-medium">Continue with Facebook</span></button>
-                    <button className="flex items-center gap-2 mx-auto bg-yellow-900 text-white rounded-md p-3"><FaGoogle /><span className="text-base font-medium">Continue with Google</span></button>
+                    <button onClick={handleGithubLogin} className="flex items-center gap-2 mx-auto bg-black text-white rounded-md p-3"><FaGithub /><span className="text-base font-medium">Continue with GitHub</span></button>
+                    <button onClick={handleGoogleLogin} className="flex items-center gap-2 mx-auto bg-yellow-900 text-white rounded-md p-3"><FaGoogle /><span className="text-base font-medium">Continue with Google</span></button>
                 </div>
             </div>
         </div>
