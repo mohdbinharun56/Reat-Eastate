@@ -1,8 +1,6 @@
 import { Outlet } from "react-router-dom";
 import Navbar from "./sharedComponents/Navbar";
 import Footer from "./sharedComponents/Footer";
-import { useContext } from "react";
-import { CreateContext } from "./sharedComponents/Provider/AuthProvider";
 
 
 const Root = () => {
@@ -11,7 +9,7 @@ const Root = () => {
             <div>
                 <Navbar />
             </div>
-            <div className="max-w-7xl mx-auto">
+            <div id="body-container" className="max-w-7xl mx-auto">
                 <div className="mt-10">
                     <Outlet />
                 </div>

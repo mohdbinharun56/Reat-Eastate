@@ -7,7 +7,7 @@ const ProtectedRoutes = ({ children }) => {
     const location = useLocation();
     
     if (loading) {
-       return <div className="text-center text-7xl font-bold font-serif">Loading...</div>
+       return <div id="loading-content" className="text-center text-7xl font-bold font-serif">Loading...</div>
     }
     if (user) {
         return children;

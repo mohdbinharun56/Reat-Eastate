@@ -1,7 +1,6 @@
-// import { useEffect } from "react";
 import { useEffect, useState } from "react";
-import { GiConsoleController } from "react-icons/gi";
 import { useParams } from "react-router-dom";
+
 
 const EastateDetails = () => {
     const [featureEastate, setFeatureEastate] = useState([]);
@@ -21,7 +20,7 @@ const EastateDetails = () => {
     }, [])
 
     return (
-        <div className="flex flex-col-reverse lg:flex-row justify-around items-center gap-6 lg:gap-0">
+        <div id="details-container" className="flex flex-col-reverse lg:flex-row justify-around items-center gap-6 lg:gap-0 ">
             <div className="ml-10">
                 <div className="flex items-center">
                     <p className="text-base font-sans my-2 font-medium uppercase text-slate-600">for-{featureEastate.Status},</p>
