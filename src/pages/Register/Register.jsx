@@ -1,8 +1,9 @@
-import { useContext, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { CreateContext } from "../../sharedComponents/Provider/AuthProvider";
 import Swal from "sweetalert2";
 import { useForm } from "react-hook-form";
+import { Helmet } from "react-helmet";
 
 const Register = () => {
     // React Hook Form for Validation purpose
@@ -51,7 +52,9 @@ const Register = () => {
 
     // implementing useNavigate hook to navigation others page.
     const navigate = useNavigate();
-
+    useEffect(()=>{
+        document.title = "Register | Real Eastate Hub";
+    },[])
     return (
         <div>
             <div className="mt-2">

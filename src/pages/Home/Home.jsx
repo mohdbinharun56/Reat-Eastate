@@ -2,17 +2,22 @@ import { useEffect, useState } from "react";
 import FeatureStateCard from "../../sharedComponents/FeatureStateCard";
 import Slider from "../../sharedComponents/Slider";
 
+import { Helmet, HelmetProvider } from "react-helmet-async";
 const Home = () => {
-    const [featureState,setFeatureState] = useState([]);
+    const [featureState, setFeatureState] = useState([]);
 
-    useEffect(()=>{
+    useEffect(() => {
         fetch('categories.json')
-        .then(res=>res.json())
-        .then(data=>{
-            console.log(Array.isArray(data));
-            setFeatureState(Array.isArray(data)?data:[]);
-        })
-    },[])
+            .then(res => res.json())
+            .then(data => {
+                console.log(Array.isArray(data));
+                setFeatureState(Array.isArray(data) ? data : []);
+            })
+    }, [])
+
+    useEffect(() => {
+        document.title = "Home | Real Eastate Hub";
+    }, [])
 
     return (
         <div>

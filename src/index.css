@@ -8,3 +8,20 @@
     min-height: 451px; 
 }
 
+#hoverName{
+    display: none;
+    position: absolute;
+    background-color: white;
+    color: #00335A;
+    right: 35px;
+    top: 50px;
+    padding: 10px;
+    border: 1px solid #00335A;
+    border-radius: 10px;
+    font-size:large ;
+    font-weight: bold;
+}
+
+#hoverImage:hover+ #hoverName{
+    display: block;
+}

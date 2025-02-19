@@ -1,4 +1,4 @@
-import { useContext, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import { useForm } from "react-hook-form";
 import { FaFacebook, FaGoogle } from "react-icons/fa";
 import { Link, useLocation, useNavigate } from "react-router-dom";
@@ -24,6 +24,11 @@ const Login = () => {
             })
             .catch(error => setError(error.message.split('/').pop().replace(')', '')))
     }
+    useEffect(() => {
+        document.title = "Login | Real Eastate Hub";
+    }, [])
+    
+
     return (
         <div>
             <div className="mt-2">
