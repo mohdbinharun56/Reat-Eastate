@@ -3,7 +3,13 @@
 @tailwind utilities;
 
 
-#hoverName{
+/* Hide default browser password toggle */
+input::-ms-reveal,
+input::-ms-clear {
+    display: none;
+}
+
+#hoverName {
     display: none;
     position: absolute;
     background-color: white;
@@ -13,10 +19,10 @@
     padding: 10px;
     border: 1px solid #00335A;
     border-radius: 10px;
-    font-size:large ;
+    font-size: large;
     font-weight: bold;
 }
 
-#hoverImage:hover+ #hoverName{
+#hoverImage:hover+#hoverName {
     display: block;
 }

@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
-
+import 'animate.css';
 
 const EastateDetails = () => {
     const [featureEastate, setFeatureEastate] = useState([]);
@@ -48,7 +48,7 @@ const EastateDetails = () => {
                     <p className="mt-5"><span className="text-lg font-medium font-sans">Location:</span> {featureEastate.location}</p>
 
                 </div>
-                <div className="border-2 shadow-sm  shadow-slate-400 mx-3">
+                <div className="shadow-sm  shadow-slate-400 mx-3 animate__animated animate__backInRight">
                     <img src={featureEastate.image} className="md:max-w-2xl" />
                 </div>
 

@@ -3,8 +3,15 @@ import { Link, useNavigate } from "react-router-dom";
 import { CreateContext } from "../../sharedComponents/Provider/AuthProvider";
 import Swal from "sweetalert2";
 import { useForm } from "react-hook-form";
+import { FaRegEye } from "react-icons/fa";
+import { IoEyeOffSharp } from "react-icons/io5";
 
 const Register = () => {
+    const [toggle,setToggle] = useState(false);
+    const handleToggle = () =>{
+        setToggle(!toggle);
+        console.log(toggle);
+    }
     // destructure signUp function to implementing  useContext hooks.
     const { signUp, profileUpdate } = useContext(CreateContext);
 
@@ -39,7 +46,7 @@ const Register = () => {
         signUp(Email, Password)
             .then(res => {
                 profileUpdate(Name, Photo)
-                .then(() => {
+                    .then(() => {
                         console.log(res);
                         Swal.fire(
                             {
@@ -51,7 +58,7 @@ const Register = () => {
                         )
                         navigate('/');
                     })
-                    // .catch(error => setError(error.message.split('/').pop().replace(')', '')))
+                // .catch(error => setError(error.message.split('/').pop().replace(')', '')))
             })
             .catch(error => setError(error.message.split('/').pop().replace(')', '')))
     }
@@ -62,7 +69,7 @@ const Register = () => {
     return (
         <div>
             <div className="mt-2">
-                <div className="space-y-5 md:w-1/2 mx-auto shadow-md border border-[#ABABAB] rounded-md px-10 py-4 ">
+                <div className="space-y-5 mx-auto shadow-md border border-[#ABABAB] rounded-md px-10 py-4 ">
                     <h1 className="text-2xl font-bold">Register</h1>
                     <form className="space-y-10" onSubmit={handleSubmit(handleRegister)}>
                         <input type="text"
@@ -78,11 +85,14 @@ const Register = () => {
                             className="w-full text-base font-medium outline-none border border-black p-2 rounded-ss-xl"
                         />
                         {errors.Email && <span className="text-red-500">This field is required</span>}
-                        <input type="password"
-                            placeholder="Password"
-                            {...register("Password", { required: true })}
-                            className="w-full text-base font-medium outline-none border border-black p-2 rounded-ss-xl"
-                        />
+                        <div className="flex items-center">
+                            <input type={`${toggle ? 'text' : 'password'}`}
+                                placeholder="Password"
+                                {...register("Password", { required: true })}
+                                className="w-full text-base font-medium outline-none border border-black p-2 rounded-ss-xl"
+                            />
+                            <span onClick={handleToggle} className="relative -left-7">{toggle ? <IoEyeOffSharp className="cursor-pointer" /> : <FaRegEye className="cursor-pointer"/>}</span>
+                        </div>
                         {errors.Password && <span className="text-red-500">This field is required</span>}
                         <input type="text"
                             placeholder="Photo URL"
