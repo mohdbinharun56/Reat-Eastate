@@ -1,13 +1,21 @@
-// import { useContext } from "react";
+import "aos/dist/aos.css";
+import Aos from "aos";
 import { Link } from "react-router-dom";
-// import { CreateContext } from "./Provider/AuthProvider";
+import { useEffect } from "react";
 
 
 const FeatureStateCard = ({ featureState }) => {
     // const { user } = useContext(CreateContext);
     const { id, image, eastate_title, segment_name, price, Status, Area, location, facilities, description } = featureState;
+    
+    useEffect(()=>{
+        Aos.init({
+            duration: 1200,
+            once: true
+        })
+    },[])
     return (
-        <div className="card bg-base-100 shadow-xl">
+        <div className="card bg-base-100 shadow-xl" data-aos="slide-up">
             <figure className=" ">
                 <img
                     src={image}

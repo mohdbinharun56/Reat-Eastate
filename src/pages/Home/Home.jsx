@@ -3,6 +3,7 @@ import FeatureStateCard from "../../sharedComponents/FeatureStateCard";
 import Slider from "../../sharedComponents/Slider";
 
 import { Helmet, HelmetProvider } from "react-helmet-async";
+import ContactDetails from "../../sharedComponents/ContactDetails";
 const Home = () => {
     const [featureState, setFeatureState] = useState([]);
 
@@ -29,6 +30,9 @@ const Home = () => {
                 {
                     featureState.map(featureState => <FeatureStateCard key={featureState.id} featureState={featureState}></FeatureStateCard>)
                 }
+            </div>
+            <div>
+                <ContactDetails/>
             </div>
         </div>
     );
