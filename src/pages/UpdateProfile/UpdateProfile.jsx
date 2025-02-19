@@ -23,9 +23,7 @@ const UpdateProfile = () => {
                 }
             )
             navigate('/')
-        })
-
-
+        });
     }
     return (
         <div className="min-h-[451px]">

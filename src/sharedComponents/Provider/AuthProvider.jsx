@@ -19,6 +19,7 @@ const AuthProvider = ({ children }) => {
                 setLoading(false);
             }else{
                 setUser(null);
+                setLoading(false);
                 console.log("No user loged in");
             }
         })
