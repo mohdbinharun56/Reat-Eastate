@@ -1,7 +1,7 @@
 import { FaFacebook, FaInstagram, FaLinkedin, FaTwitter } from 'react-icons/fa';
 const Footer = () => {
     return (
-        <div className='mt-10 bg-[#00335A] text-white py-12 px-10 relative'>
+        <div className='mt-10 bg-[#00335A] text-white py-12 px-10'>
             <div className='flex flex-col lg:flex-row items-center justify-center gap-3 lg:gap-20'>
                 <a href=""><p className='flex items-center gap-3'><FaFacebook />Faceebook</p></a>
                 <a href=""><p className='flex items-center gap-3'><FaTwitter />Twitter</p></a>

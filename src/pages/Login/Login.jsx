@@ -19,7 +19,8 @@ const Login = () => {
 
         signIn(email, password)
             .then(res => {
-                console.log(res.user)
+                setError('');
+                console.log(res.user);
                 navigate(location?.state || '/');
             })
             .catch(error => setError(error.message.split('/').pop().replace(')', '')))
@@ -32,8 +33,9 @@ const Login = () => {
         console.log("google");
         loginWithGoogle()
         .then(res=>{
-            console.log(res.user)
-            navigate(location?.state || '/')
+            setError('');
+            console.log(res.user);
+            navigate(location?.state || '/');
         })
         .catch(error=>setError(error.message.split('/').pop().replace(')','')))
     }
@@ -41,14 +43,16 @@ const Login = () => {
         console.log("github")
         loginWithGithub()
         .then(res=>{
+            setError('');
             console.log(res.user);
             navigate(location?.state || '/');
         })
+        .catch(error=>setError(error.message.split('/').pop().replace(')','')))
     }
     return (
         <div>
             <div className="mt-2">
-                <div className="space-y-5 md:w-1/2 mx-auto shadow-md border border-[#ABABAB] rounded-md px-10 py-4 ">
+                <div className="space-y-5 mx-auto shadow-md border border-[#ABABAB] rounded-md px-10 py-4 ">
                     <h1 className="text-2xl font-bold">Login</h1>
                     <form className="space-y-10" onSubmit={handleSubmit(handleLogin)}>
                         <input type="email"

@@ -5,16 +5,18 @@ import Footer from "./sharedComponents/Footer";
 
 const Root = () => {
     return (
-        <div>
+        <div className="flex flex-col min-h-screen">
             <div>
                 <Navbar />
             </div>
-            <div id="body-container" className="max-w-7xl mx-auto">
+            <div className="max-w-7xl mx-auto flex-grow flex justify-center items-center">
                 <div className="mt-10">
                     <Outlet />
                 </div>
             </div>
-            <Footer />
+            <div className="footer-content relative bottom-0 w-full">
+                <Footer />
+            </div>
         </div>
     );
 };

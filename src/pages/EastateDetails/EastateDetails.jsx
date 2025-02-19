@@ -26,17 +26,17 @@ const EastateDetails = () => {
         <>
             <div id="details-container" className="flex flex-col-reverse lg:flex-row justify-around items-center gap-6 lg:gap-0 ">
 
-                <div className="ml-10">
+                <div className="md:ml-10">
                     <div className="flex items-center">
                         <p className="text-base font-sans my-2 font-medium uppercase text-slate-600">for-{featureEastate.Status},</p>
                         <p className="text-sm font-sans my-2 pl-2  underline text-slate-500">{featureEastate.segment_name}</p>
                     </div>
-                    <h1 className="text-xl md:text-4xl font-bold font-serif">{featureEastate.eastate_title}</h1>
+                    <h1 className="text-lg md:text-4xl font-bold font-serif">{featureEastate.eastate_title}</h1>
                     <div className="flex justify-start mt-2 items-center gap-20">
-                        <p><span className="textt-lg font-medium font-sans">Area:</span> {featureEastate.Area}</p>
-                        <p><span className="textt-lg font-medium font-sans">Price:</span> {featureEastate.price}</p>
+                        <p><span className="text-lg font-medium font-sans">Area:</span> {featureEastate.Area}</p>
+                        <p><span className="text-lg font-medium font-sans">Price:</span> {featureEastate.price}</p>
                     </div>
-                    <div className="w-96 md:w-full my-4">
+                    <div className="w-80 md:w-full my-4">
                         <p className="italic text-base md:text-xl ">{featureEastate.description}</p>
                     </div>
                     <div>
