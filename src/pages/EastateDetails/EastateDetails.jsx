@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import 'animate.css';
 import { setItem } from "../../../public/utlities";
+import { toast } from "react-toastify";
 
 const EastateDetails = () => {
     const [featureEastate, setFeatureEastate] = useState([]);
