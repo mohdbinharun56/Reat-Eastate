@@ -5,7 +5,9 @@ import { useEffect } from "react";
 
 
 const FeatureStateCard = ({ featureState }) => {
-    const { id, image, eastate_title, segment_name, price, Status, Area, location, facilities, description } = featureState;
+
+    // destructuring object
+    const { id, image, eastate_title, segment_name, price, Status, Area, location, description } = featureState;
     
     // AOS Animation SlIDE-UP
     useEffect(()=>{
@@ -14,6 +16,7 @@ const FeatureStateCard = ({ featureState }) => {
             once: true
         })
     },[])
+    
     return (
         <div className="card bg-base-100 shadow-xl" data-aos="slide-up">
             <figure className=" ">

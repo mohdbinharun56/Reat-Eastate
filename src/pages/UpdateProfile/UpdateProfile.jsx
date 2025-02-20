@@ -3,18 +3,20 @@ import { CreateContext } from "../../sharedComponents/Provider/AuthProvider";
 import Swal from "sweetalert2";
 import { useNavigate } from "react-router-dom";
 const UpdateProfile = () => {
-    const { user } = useContext(CreateContext);
+    const { user,profileUpdate } = useContext(CreateContext);
+    // state for name and photo initialy set displayName if exist otherwise '' empty
     const [name, setName] = useState(user?.displayName || '');
     const [photo, setPhotoURL] = useState(user?.photoURL || '');
 
-    const { profileUpdate } = useContext(CreateContext);
+    // use useNavigate hook to navigate without user interaction.
     const navigate = useNavigate();
 
+    // update button call method
     const handleUpdate = (e) => {
         e.preventDefault();
-        profileUpdate(name, photo)
+        profileUpdate(name, photo) // updateProfile method 
             .then(() => {
-                Swal.fire(
+                Swal.fire( // sweetalert for alert after update
                     {
                         title: "Updated",
                         icon: "update",
@@ -22,12 +24,15 @@ const UpdateProfile = () => {
                         timer: 2000
                     }
                 )
-                navigate('/')
+                navigate('/'); // navigete to home page after successfully update
             });
     }
+
+    // title
     useEffect(() => {
         document.title = "Update Profile | Real Eastate Hub"
     }, [])
+    
     return (
         <>
             <div>

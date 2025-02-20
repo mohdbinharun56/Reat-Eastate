@@ -1,13 +1,12 @@
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import 'animate.css';
-import { setItem } from "../../../public/utlities";
+import { deleteItem, getList, setItem } from "../../../public/utlities";
 import { toast } from "react-toastify";
 
 const EastateDetails = () => {
     const [featureEastate, setFeatureEastate] = useState([]);
-
-    
+    const [saveList, setSaveList] = useState([]);
     const { id } = useParams();
     const numID = parseInt(id);
 
@@ -28,10 +27,37 @@ const EastateDetails = () => {
         document.title = "Details | Real Eastate Hub";
     }, [])
 
-    // Save List 
-    const handleSaveLists = (id) =>{
-        console.log('list id',id);
-        setItem(id); // add list id into local storage
+    // get List from localStorage 
+    useEffect(() => {
+        const getItem = getList();
+        console.log(getItem);
+        setSaveList(getItem);
+    }, [])
+
+
+    // Save List into localStorage
+    const handleSaveLists = (id) => {
+        console.log('list id', id);
+        const saveItem = setItem(id); // add list id into local storage
+        console.log('return save:', saveItem)
+        if (saveItem) {
+            setSaveList([...saveList, id]); // set item id and save into setSaveList
+            toast.success("Successfully saved into My Lists");
+        } else {
+            toast.error("Already saved in My Lists");
+        }
+    }
+
+    // Delete a specific item from localStorage
+    const handleDeleteLists = (id) => {
+
+        if (deleteItem(id)) {
+            const restItem = saveList.filter(itemId => itemId !== id);
+            setSaveList(restItem); // set rest of the item id after delete.
+            toast.success("Delete Item Successfully from My List.")
+        } else {
+            toast.error("Item does not have in List. TO save hit on save list.")
+        }
     }
 
     return (
@@ -58,7 +84,10 @@ const EastateDetails = () => {
                         }
                     </div>
                     <p className="mt-5"><span className="text-lg font-medium font-sans">Location:</span> {featureEastate.location}</p>
-                    <button className="btn btn-accent mt-5" onClick={()=>handleSaveLists(featureEastate.id)}>Save Lists</button>
+                    {
+                        saveList.includes(featureEastate.id) ? <button className="btn btn-error mt-5" onClick={() => handleDeleteLists(featureEastate.id)}>Delete List</button> :
+                            <button className="btn btn-accent mt-5" onClick={() => handleSaveLists(featureEastate.id)}>Save List</button>
+                    }
                 </div>
                 <div className="shadow-sm  shadow-slate-400 mx-3 animate__animated animate__backInRight">
                     <img src={featureEastate.image} className="md:max-w-2xl" />

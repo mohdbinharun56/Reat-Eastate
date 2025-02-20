@@ -5,6 +5,7 @@ import Slider from "../../sharedComponents/Slider";
 const Home = () => {
     const [featureState, setFeatureState] = useState([]);
 
+    // fetch data from category.json file and set into state.
     useEffect(() => {
         fetch('categories.json')
             .then(res => res.json())
@@ -14,6 +15,7 @@ const Home = () => {
             })
     }, [])
 
+    // title
     useEffect(() => {
         document.title = "Home | Real Eastate Hub";
     }, [])

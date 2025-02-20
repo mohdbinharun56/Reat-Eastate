@@ -2,9 +2,7 @@
 const Slider = () => {
     return (
         <>
-
             {/* Carousel */}
-
             <div className="carousel w-full rounded-md md:h-[600px]">
                 <div id="slide1" className="carousel-item relative w-full">
                     <img

@@ -7,48 +7,50 @@ import { FaRegEye } from "react-icons/fa";
 import { IoEyeOffSharp } from "react-icons/io5";
 
 const Register = () => {
-    const [toggle,setToggle] = useState(false);
-    const handleToggle = () =>{
-        setToggle(!toggle);
-        console.log(toggle);
-    }
     // destructure signUp function to implementing  useContext hooks.
-    const { signUp, profileUpdate } = useContext(CreateContext);
-
+    const { signUp, profileUpdate,toggleCheck,toggle} = useContext(CreateContext);
+    
     // set useState hook to manage the error.
     const [error, setError] = useState('');
 
     // implementing useNavigate hook to navigation others page.
     const navigate = useNavigate();
 
+    // check is toogle true or false
+    const handleToggle = () =>{
+        toggleCheck(); // true || false
+    }
+
     // React Hook Form for Validation purpose
-    const { register, handleSubmit, watch, formState: { errors } } = useForm();
-    // const onSubmit = (data) => console.log(data)
+    const { register, handleSubmit, formState: { errors } } = useForm();
+  
+    // register button call method
     const handleRegister = (data) => {
         // console.log(data);
         const { Name, Email, Password, Photo } = data;
 
         if (Password.length < 6) {
-            setError('Password at least 6 characters or long');
+            setError('Password must be at least 6 characters or long');
             return;
         }
         if (!/[A-Z]/.test(Password)) {
-            setError('Password must be contain at least one upper case');
+            setError('Password must contain at least one UPPERCASE');
             return;
         }
         if (!/[a-z]/.test(Password)) {
-            setError('Password must contain at least one lower case');
+            setError('Password must contain at least one lowercase');
             return;
         }
 
-        console.log(Name, Email, Password, Photo);
+        // console.log(Name, Email, Password, Photo);
 
-        signUp(Email, Password)
+        // signUp method to create user.
+        signUp(Email, Password) 
             .then(res => {
-                profileUpdate(Name, Photo)
+                profileUpdate(Name, Photo) // updateProfile method to update user-> (name,photoURL)
                     .then(() => {
                         console.log(res);
-                        Swal.fire(
+                        Swal.fire( // an alert using sweetalert package
                             {
                                 title: "Successfully Register",
                                 icon: "success",
@@ -58,14 +60,15 @@ const Register = () => {
                         )
                         navigate('/');
                     })
-                // .catch(error => setError(error.message.split('/').pop().replace(')', '')))
             })
-            .catch(error => setError(error.message.split('/').pop().replace(')', '')))
+            .catch(error => setError(error.message.split('/').pop().replace(')', ''))) // split in '/' and remove last item and replace ')' to '' empty.
     }
 
+    // title
     useEffect(() => {
         document.title = "Register | Real Eastate Hub";
     }, [])
+    
     return (
         <div>
             <div className="mt-2">

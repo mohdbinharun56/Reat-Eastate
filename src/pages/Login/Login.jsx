@@ -12,44 +12,52 @@ const Login = () => {
     const [error, setError] = useState('');
     const navigate = useNavigate();
     const { register, handleSubmit, formState: { errors } } = useForm();
+    // to locate the pathName and state
     const location = useLocation();
 
+    // lofin button call method
     const handleLogin = (data) => {
         const { email, password } = data;
-        console.log(email, password);
+        // console.log(email, password);
 
-        signIn(email, password)
-            .then(res => {
+        signIn(email, password) // signInWithEmailAndPassword method
+            .then(() => {
                 setError('');
-                console.log(res.user);
-                navigate(location?.state || '/');
+                // console.log(res.user);
+                navigate(location?.state || '/'); // after sign in navigate to state location or Home
             })
             .catch(error => setError(error.message.split('/').pop().replace(')', '')))
     }
+
+    // title
     useEffect(() => {
         document.title = "Login | Real Eastate Hub";
     }, [])
 
+    // google login button call method
     const handleGoogleLogin = () => {
         console.log("google");
         loginWithGoogle()
             .then(res => {
                 setError('');
                 console.log(res.user);
-                navigate(location?.state || '/');
+                navigate(location?.state || '/'); // after sign in navigate to state location or Home
             })
             .catch(error => setError(error.message.split('/').pop().replace(')', '')))
     }
+
+    // github login button call method
     const handleGithubLogin = () => {
         console.log("github")
         loginWithGithub()
             .then(res => {
                 setError('');
                 console.log(res.user);
-                navigate(location?.state || '/');
+                navigate(location?.state || '/'); // after sign in navigate to state location or Home
             })
             .catch(error => setError(error.message.split('/').pop().replace(')', '')))
     }
+
     return (
         <div>
             <div>

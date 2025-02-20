@@ -6,11 +6,15 @@ const Navbar = () => {
     const { user, logOut } = useContext(CreateContext);
 
     const navigate = useNavigate();
+
+    // logout button call method
     const handleLogout = () => {
         logOut()
             .then(() => navigate('/login'))
             .catch(error => { console.log(error.message) })
     }
+
+    // navbar links
     const navLinnks = <>
         <li><NavLink to='/'>Home</NavLink></li>
         <li><NavLink to='/update'>Update Profile</NavLink></li>

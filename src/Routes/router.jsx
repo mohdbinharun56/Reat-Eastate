@@ -41,7 +41,7 @@ const router = createBrowserRouter([
             },
             {
                 path: '/lists',
-                loader: ()=>fetch('/categories.json'),
+                loader: () => fetch('/categories.json'),
                 element: <ProtectedRoutes>
                     <Lists />
                 </ProtectedRoutes>

@@ -6,10 +6,9 @@ import FeatureStateCard from "../../sharedComponents/FeatureStateCard";
 const Lists = () => {
     const [saveLists, setSaveLists] = useState([]);
     const featureEastate = useLoaderData();
-    // console.log(featureEastate)
 
     useEffect(() => {
-        const getSavedListId = getList();
+        const getSavedListId = getList(); // get list item from getList()-localstorage
         console.log(getSavedListId);
         // filter
         const isExistEastate = featureEastate.filter(eastate => getSavedListId.includes(eastate.id));
@@ -17,8 +16,13 @@ const Lists = () => {
         setSaveLists([...isExistEastate])
 
     }, [])
+    // console.log("Eastate List is: ", saveLists);
 
-    console.log("Eastate List is: ", saveLists);
+     // title 
+     useEffect(() => {
+        document.title = "My List | Real Eastate Hub";
+    }, [])
+
     return (
         <div>
             <div className=" text-center">
