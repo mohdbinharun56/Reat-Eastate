@@ -1,13 +1,16 @@
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import 'animate.css';
+import { setItem } from "../../../public/utlities";
 
 const EastateDetails = () => {
     const [featureEastate, setFeatureEastate] = useState([]);
 
+    
     const { id } = useParams();
     const numID = parseInt(id);
 
+    // Fetch dynamic Feature-Eastate data.
     useEffect(() => {
         fetch('/categories.json')
             .then(res => res.json())
@@ -18,9 +21,17 @@ const EastateDetails = () => {
                 setFeatureEastate(findFeatureEastate);
             })
     }, [])
+
+    // title 
     useEffect(() => {
         document.title = "Details | Real Eastate Hub";
     }, [])
+
+    // Save List 
+    const handleSaveLists = (id) =>{
+        console.log('list id',id);
+        setItem(id); // add list id into local storage
+    }
 
     return (
         <>
@@ -46,7 +57,7 @@ const EastateDetails = () => {
                         }
                     </div>
                     <p className="mt-5"><span className="text-lg font-medium font-sans">Location:</span> {featureEastate.location}</p>
-
+                    <button className="btn btn-accent mt-5" onClick={()=>handleSaveLists(featureEastate.id)}>Save Lists</button>
                 </div>
                 <div className="shadow-sm  shadow-slate-400 mx-3 animate__animated animate__backInRight">
                     <img src={featureEastate.image} className="md:max-w-2xl" />

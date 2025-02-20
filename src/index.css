@@ -15,7 +15,7 @@ input::-ms-clear {
     background-color: white;
     color: #00335A;
     right: 35px;
-    top: 50px;
+    top: 65px;
     padding: 10px;
     border: 1px solid #00335A;
     border-radius: 10px;
@@ -26,16 +26,4 @@ input::-ms-clear {
 #hoverImage:hover+#hoverName {
     display: block;
 }
-
-
-.item {
-    width: 200px;
-    height: 200px;
-    margin: 50px auto;
-    padding-top: 75px;
-    background: #ccc;
-    text-align: center;
-    color: #FFF;
-    font-size: 3em;
-  }
   

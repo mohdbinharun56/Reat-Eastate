@@ -16,9 +16,8 @@ const Navbar = () => {
         <li><NavLink to='/update'>Update Profile</NavLink></li>
         <li>
             {
-                user ? <div>
-                    Welcome {user?.displayName || user?.email || '-'}
-                </div> : <NavLink to='/login'>Login</NavLink>
+                user ? <NavLink to='/lists'>My Lists</NavLink> 
+                : <NavLink to='/login'>Login</NavLink>
             }
         </li>
     </>
@@ -55,12 +54,13 @@ const Navbar = () => {
             </div>
             <div className="navbar-end">
                 {
-                    user ? <div className="flex items-center gap-2">
+                    user ? <div className="flex items-center gap-3">
+                        <p>Welcome {user?.displayName || user?.email || '-'}</p>
                         <div>
                             <img id='hoverImage' src={user?.photoURL || 'https://avatars.githubusercontent.com/u/79358840?v=4'} alt="Profile" className="w-10 rounded-full" />
                             <small id="hoverName">{user?.displayName || user?.email || 'Name Not Found'}</small>
                         </div>
-                        <button className="btn btn-secondary text-white" onClick={handleLogout}>Logout</button>
+                        <button className="btn btn-error text-white" onClick={handleLogout}>Logout</button>
                     </div> : <Link className="btn btn-primary" to='/login'>Login</Link>
                 }
             </div>

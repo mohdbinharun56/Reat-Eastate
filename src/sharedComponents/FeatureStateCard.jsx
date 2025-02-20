@@ -5,9 +5,9 @@ import { useEffect } from "react";
 
 
 const FeatureStateCard = ({ featureState }) => {
-    // const { user } = useContext(CreateContext);
     const { id, image, eastate_title, segment_name, price, Status, Area, location, facilities, description } = featureState;
     
+    // AOS Animation SlIDE-UP
     useEffect(()=>{
         Aos.init({
             duration: 1200,
